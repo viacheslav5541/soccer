@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/soccer/static/css/main.30452125.css",
+    "main.js": "/soccer/static/js/main.dc564ae0.js",
+    "static/js/787.be9fe557.chunk.js": "/soccer/static/js/787.be9fe557.chunk.js",
+    "static/media/game.mp3": "/soccer/static/media/game.4049ecd6053a9cb823df.mp3",
+    "static/media/menu-background.webp": "/soccer/static/media/menu-background.8f2bf2d74ecb8ed9f4eb.webp",
+    "static/media/miss.mp3": "/soccer/static/media/miss.c7a55060cf5c0961169c.mp3",
+    "static/media/SofiaSans-Black.ttf": "/soccer/static/media/SofiaSans-Black.e5f5ca0430a9e21e0ac8.ttf",
+    "static/media/goal-people.mp3": "/soccer/static/media/goal-people.30fe17527a549667c744.mp3",
+    "static/media/finishKeeper.png": "/soccer/static/media/finishKeeper.851125375a59f106b3b3.png",
+    "static/media/3.png": "/soccer/static/media/3.a3b8b798a18ca6f7c19c.png",
+    "static/media/5.png": "/soccer/static/media/5.f02066ed7a49474f215f.png",
+    "static/media/1.png": "/soccer/static/media/1.478f44d0287a3eb2ec30.png",
+    "static/media/6.png": "/soccer/static/media/6.d7c6aade4994c31fbb86.png",
+    "static/media/2.png": "/soccer/static/media/2.c0ea0d79bb302a27948f.png",
+    "static/media/background.webp": "/soccer/static/media/background.193ee2da13ddb68c363e.webp",
+    "static/media/4.png": "/soccer/static/media/4.95099e6538a8db7e7fdb.png",
+    "static/media/box.webp": "/soccer/static/media/box.053da190d5db4959aefc.webp",
+    "static/media/kick.mp3": "/soccer/static/media/kick.46746196b17f63e98dbe.mp3",
+    "static/media/Cloud.png": "/soccer/static/media/Cloud.924fdc53a9606bf9d405.png",
+    "static/media/goal.mp3": "/soccer/static/media/goal.c8da0b82d44735f84719.mp3",
+    "static/media/scoreTable.webp": "/soccer/static/media/scoreTable.cf711d2435f1c0ed4045.webp",
+    "index.html": "/soccer/index.html",
+    "main.30452125.css.map": "/soccer/static/css/main.30452125.css.map",
+    "main.dc564ae0.js.map": "/soccer/static/js/main.dc564ae0.js.map",
+    "787.be9fe557.chunk.js.map": "/soccer/static/js/787.be9fe557.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.30452125.css",
+    "static/js/main.dc564ae0.js"
+  ]
+}
