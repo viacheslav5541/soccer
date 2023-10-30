@@ -1,38 +1,165 @@
-.App {
-  text-align: center;
+.game-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.game-header {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  padding-left: 44px;
+  padding-right: 44px;
+  padding-top: 44px;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.game-header-text {
+  font-size: 74px;
+}
+
+.header-button-text {
+  font-family: "SofiaSansBold";
+  font-size: 74.464px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  letter-spacing: 2.979px;
+  text-transform: uppercase;
+}
+
+.first {
+  color: #e5e3db;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  letter-spacing: 1.489px;
+  text-transform: uppercase;
+}
+
+.second {
+  color: #141d5b;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  letter-spacing: 2.979px;
+  text-transform: uppercase;
+
+  text-shadow: -0 -3px 0 #ffffff, 0 -3px 0 #ffffff, -0 3px 0 #ffffff,
+    0 3px 0 #ffffff, -3px -0 0 #ffffff, 3px -0 0 #ffffff, -3px 0 0 #ffffff,
+    3px 0 0 #ffffff, -1px -3px 0 #ffffff, 1px -3px 0 #ffffff, -1px 3px 0 #ffffff,
+    1px 3px 0 #ffffff, -3px -1px 0 #ffffff, 3px -1px 0 #ffffff,
+    -3px 1px 0 #ffffff, 3px 1px 0 #ffffff, -2px -3px 0 #ffffff,
+    2px -3px 0 #ffffff, -2px 3px 0 #ffffff, 2px 3px 0 #ffffff,
+    -3px -2px 0 #ffffff, 3px -2px 0 #ffffff, -3px 2px 0 #ffffff,
+    3px 2px 0 #ffffff, -3px -3px 0 #ffffff, 3px -3px 0 #ffffff,
+    -3px 3px 0 #ffffff, 3px 3px 0 #ffffff, -3px -3px 0 #ffffff,
+    3px -3px 0 #ffffff, -3px 3px 0 #ffffff, 3px 3px 0 #ffffff;
+}
+
+.gbutton {
+  cursor: pointer;
+  width: 100%;
+  min-height: 125px;
+  border-radius: 23px;
+  background: #e5e3db;
+  display: flex;
+  color: #e5e3db;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.player-name {
+  color: #192464;
+
+  font-family: SofiaSansBold;
+  font-size: 20px;
+  font-style: normal;
+  text-align: left;
+  max-width: 66px;
+  min-width: 66px;
+  line-height: normal;
+  text-transform: uppercase;
+  margin-right: 50px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.player-image {
+  width: 95px;
+  height: 95px;
+}
+
+.header-button-text {
+  text-shadow: -0 -3px 0 #141d5b, 0 -3px 0 #141d5b, -0 3px 0 #141d5b,
+    0 3px 0 #141d5b, -3px -0 0 #141d5b, 3px -0 0 #141d5b, -3px 0 0 #141d5b,
+    3px 0 0 #141d5b, -1px -3px 0 #141d5b, 1px -3px 0 #141d5b, -1px 3px 0 #141d5b,
+    1px 3px 0 #141d5b, -3px -1px 0 #141d5b, 3px -1px 0 #141d5b,
+    -3px 1px 0 #141d5b, 3px 1px 0 #141d5b, -2px -3px 0 #141d5b,
+    2px -3px 0 #141d5b, -2px 3px 0 #141d5b, 2px 3px 0 #141d5b,
+    -3px -2px 0 #141d5b, 3px -2px 0 #141d5b, -3px 2px 0 #141d5b,
+    3px 2px 0 #141d5b, -3px -3px 0 #141d5b, 3px -3px 0 #141d5b,
+    -3px 3px 0 #141d5b, 3px 3px 0 #141d5b, -3px -3px 0 #141d5b,
+    3px -3px 0 #141d5b, -3px 3px 0 #141d5b, 3px 3px 0 #141d5b;
+}
+
+.gbutton:hover {
+  background: #c9c7c1;
+  /* Изменение цвета фона при наведении */
+}
+
+.gbutton:active {
+  background: #b6b4ae;
+  /* Изменение цвета фона при клике */
+}
+
+@media (max-width: 600px) {
+  .game-header {
+    padding-left: 34px;
+    padding-top: 34px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .game-header-text {
+    font-size: 65px;
+  }
+  .player-name {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 450px) {
+  /* For mobile phones: */
+
+  .game-header {
+    padding-left: 24px;
+    padding-top: 24px;
+  }
+  .game-header-text {
+    font-size: 50px;
+  }
+  .player-image {
+    width: 65px;
+    height: 65px;
+  }
+}
+
+@media (max-width: 350px) {
+  /* For mobile phones: */
+
+  .game-header {
+    padding-left: 24px;
+    padding-top: 24px;
+  }
+  .game-header-text {
+    font-size: 30px;
+  }
+  .player-image {
+    width: 45px;
+    height: 45px;
+  }
+  .player-name {
+    min-width: 65px;
   }
 }
