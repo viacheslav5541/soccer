@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/soccer/static/css/main.30452125.css",
-    "main.js": "/soccer/static/js/main.593f0c6e.js",
+    "main.css": "/soccer/static/css/main.39d0cd14.css",
+    "main.js": "/soccer/static/js/main.0560a42e.js",
     "static/js/787.be9fe557.chunk.js": "/soccer/static/js/787.be9fe557.chunk.js",
     "static/media/game.mp3": "/soccer/static/media/game.4049ecd6053a9cb823df.mp3",
     "static/media/menu-background.webp": "/soccer/static/media/menu-background.8f2bf2d74ecb8ed9f4eb.webp",
@@ -22,12 +22,12 @@
     "static/media/goal.mp3": "/soccer/static/media/goal.c8da0b82d44735f84719.mp3",
     "static/media/scoreTable.webp": "/soccer/static/media/scoreTable.cf711d2435f1c0ed4045.webp",
     "index.html": "/soccer/index.html",
-    "main.30452125.css.map": "/soccer/static/css/main.30452125.css.map",
-    "main.593f0c6e.js.map": "/soccer/static/js/main.593f0c6e.js.map",
+    "main.39d0cd14.css.map": "/soccer/static/css/main.39d0cd14.css.map",
+    "main.0560a42e.js.map": "/soccer/static/js/main.0560a42e.js.map",
     "787.be9fe557.chunk.js.map": "/soccer/static/js/787.be9fe557.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.30452125.css",
-    "static/js/main.593f0c6e.js"
+    "static/css/main.39d0cd14.css",
+    "static/js/main.0560a42e.js"
   ]
 }
