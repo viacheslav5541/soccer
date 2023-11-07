@@ -1,4 +1,4 @@
-import { Stage, Container, Sprite, useTick, useApp } from "@pixi/react";
+import { Stage, Container, Sprite, useTick, useApp, Text } from "@pixi/react";
 import background from "./images/background.webp";
 import ball from "./images/ball.png";
 import ballPlace from "./images/ball-place.png";
@@ -67,7 +67,7 @@ const keeperParameters = {
   x: 550,
 };
 
-export const Ball = ({ onGoal, onMiss, player, difficult }) => {
+export const Ball = ({ onGoal, onMiss, player, score }) => {
   const [isRunning, setIsRunning] = useState(false);
 
   const [arrowRotate, setArrowRotation] = useState(Math.random() * 3 - 1.5);
@@ -85,6 +85,7 @@ export const Ball = ({ onGoal, onMiss, player, difficult }) => {
   const [keeperDirection, setKeeperDirection] = useState(1); // начальное направление движения
   const [arrowDirection, setArrowDirection] = useState(1);
 
+  const difficult = score.player + 1;
   const arrowSpeed = 1.6 + difficult / 5;
 
   const calculateBallScale = () => {
@@ -100,36 +101,64 @@ export const Ball = ({ onGoal, onMiss, player, difficult }) => {
     setTimeout(() => setIsRunning(true), 100);
   }, []);
 
-  useEffect(() => {
-    function launchBall(event) {
-      if (!isRunning) return;
-
-      const sound = new Howl({
-        src: [kickSound],
-        onplayerror: function () {
-          sound.once("unlock", function () {
-            sound.play();
-          });
-        },
-      });
-      sound.play();
-      // Проверяем, что нажата клавиша пробел
-      // Получаем угол наклона стрелки
-      const arrowAngle = arrowRotate;
-
-      // Вычисляем горизонтальную и вертикальную скорость мяча на основе угла наклона
-      const speed = 30; // Задайте желаемую скорость мяча
-      const velocityX = Math.sin(arrowAngle) * speed;
-      const velocityY = -Math.cos(arrowAngle) * speed;
-
-      // Запускаем мяч, устанавливая его скорость
-      setVelosity({ vx: velocityX, vy: velocityY });
+  function launchBall(event) {
+    if (velosity.vx !== 0 || velosity.vy !== 0) {
+      return;
     }
+    if (!isRunning) return;
 
-    window.addEventListener("click", launchBall);
+    const sound = new Howl({
+      src: [kickSound],
+      onplayerror: function () {
+        sound.once("unlock", function () {
+          sound.play();
+        });
+      },
+    });
+    sound.play();
+    // Проверяем, что нажата клавиша пробел
+    // Получаем угол наклона стрелки
+    const arrowAngle = arrowRotate;
 
-    return () => window.removeEventListener("click", launchBall);
-  }, [arrowRotate]);
+    // Вычисляем горизонтальную и вертикальную скорость мяча на основе угла наклона
+    const speed = 30; // Задайте желаемую скорость мяча
+    const velocityX = Math.sin(arrowAngle) * speed;
+    const velocityY = -Math.cos(arrowAngle) * speed;
+
+    // Запускаем мяч, устанавливая его скорость
+    setVelosity({ vx: velocityX, vy: velocityY });
+  }
+
+  // useEffect(() => {
+  //   function launchBall(event) {
+  //     if (!isRunning) return;
+
+  //     const sound = new Howl({
+  //       src: [kickSound],
+  //       onplayerror: function () {
+  //         sound.once("unlock", function () {
+  //           sound.play();
+  //         });
+  //       },
+  //     });
+  //     sound.play();
+  //     // Проверяем, что нажата клавиша пробел
+  //     // Получаем угол наклона стрелки
+  //     const arrowAngle = arrowRotate;
+
+  //     // Вычисляем горизонтальную и вертикальную скорость мяча на основе угла наклона
+  //     const speed = 30; // Задайте желаемую скорость мяча
+  //     const velocityX = Math.sin(arrowAngle) * speed;
+  //     const velocityY = -Math.cos(arrowAngle) * speed;
+
+  //     // Запускаем мяч, устанавливая его скорость
+  //     setVelosity({ vx: velocityX, vy: velocityY });
+  //   }
+
+  //   window.addEventListener("click", launchBall);
+
+  //   return () => window.removeEventListener("click", launchBall);
+  // }, [arrowRotate]);
 
   const calculateBall = (delta) => {
     if (velosity.vx || velosity.vy) {
@@ -246,6 +275,15 @@ export const Ball = ({ onGoal, onMiss, player, difficult }) => {
         height={gateParameters.height}
       /> */}
       <Sprite
+        y={344}
+        image={box}
+        width={1200}
+        height={2000}
+        onpointerdown={launchBall}
+        alpha={0}
+        interactive={true}
+      />
+      <Sprite
         position={{ y: keeperParameters.y - 180, x: keeperPosition + 25 }}
         width={125}
         height={165}
@@ -272,6 +310,23 @@ export const Ball = ({ onGoal, onMiss, player, difficult }) => {
         height={arrowParameters.height}
         image={arrow}
       ></Sprite>
+      {score.player + score.keeper < 1 && (
+        <Text
+          anchor={0.5}
+          position={{
+            x: ballPlaceParameters.x + 250,
+            y: arrowParameters.y - 130,
+          }}
+          style={{
+            fill: ["#fff"], // gradient
+            wordWrapWidth: 2231,
+            fontSize: 66,
+            fontFamily: "SofiaSansBold",
+            align: "right",
+          }}
+          text={"НАЖМИТЕ ЧТОБЫ УДАРИТЬ"}
+        ></Text>
+      )}
       <Sprite
         position={{ y: ballPlaceParameters.y, x: ballPlaceParameters.x }}
         width={ballPlaceParameters.width}

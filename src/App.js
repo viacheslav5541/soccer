@@ -7,6 +7,7 @@ import { useRef, useEffect, useState } from "react";
 import { GameScreen } from "./GameScreen";
 import { MenuScreen } from "./MenuScreen";
 import { FinishScreen } from "./FinishScreen";
+import { RatingScreen } from "./RatingScreen";
 
 const defaultSize = {
   width: 600,
@@ -17,7 +18,7 @@ function App() {
   const [height, setHeight] = useState(defaultSize.height);
   const [width, setWidth] = useState(defaultSize.width);
   const [player, setPlayer] = useState();
-  // menu or game or finish
+  // menu or game or finish or rating
   const [screen, setScreen] = useState("menu");
 
   const [score, setScore] = useState({ player: 0, keeper: 0 });
@@ -69,8 +70,16 @@ function App() {
         ></MenuScreen>
       ) : screen === "finish" ? (
         <FinishScreen
+          player={player}
           onMain={changeScreen.bind(this, "menu")}
           score={score}
+          width={width}
+          height={height}
+          onRating={changeScreen.bind(this, "rating")}
+        />
+      ) : screen === "rating" ? (
+        <RatingScreen
+          onMain={changeScreen.bind(this, "menu")}
           width={width}
           height={height}
         />
@@ -82,6 +91,7 @@ function App() {
           onFinish={changeScreen.bind(this, "finish")}
           width={width}
           height={height}
+          onHome={changeScreen.bind(this, "menu")}
         />
       )}
     </div>

@@ -87,6 +87,20 @@
   margin-right: 50px;
 }
 
+.rating-name {
+  color: #192464;
+  max-width: 150px;
+
+  overflow-wrap: normal;
+  min-width: 66px;
+  font-family: SofiaSansBold;
+  font-size: 20px;
+  font-style: normal;
+  text-align: left;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
 .player-image {
   width: 95px;
   height: 95px;
@@ -143,6 +157,9 @@
     width: 65px;
     height: 65px;
   }
+  .rating-name {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 350px) {
@@ -161,5 +178,8 @@
   }
   .player-name {
     min-width: 65px;
+  }
+  .rating-name {
+    font-size: 10px;
   }
 }

@@ -1,11 +1,48 @@
 import background from "./images/menu-background.webp";
-
+import { useRef, useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
 import keeper from "./images/finishKeeper.png";
 import board from "./images/scoreTable.webp";
+import rating from "./images/rating.png";
 import "./App.css";
 import { Sprite, Stage } from "@pixi/react";
-export const FinishScreen = ({ width, height, score, onMain }) => {
+import axios from "axios";
+export const FinishScreen = ({
+  width,
+  height,
+  score,
+  onMain,
+  onRating,
+  player,
+}) => {
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const user_id = urlParams.get("user_id");
+    if (user_id) {
+      axios
+        .post(
+          "https://cordiant.4k-pr.com/api/dinamo/addPoints",
+          {
+            user_id,
+            count: 1000 - score.keeper * 100 + score.player * 100,
+            lose_points: score.keeper,
+            mode: "easy",
+            win_points: score.player,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, []);
   return (
     <div
       style={{
@@ -54,6 +91,13 @@ export const FinishScreen = ({ width, height, score, onMain }) => {
           </g>
         </svg>
       </div>
+      <div
+        onClick={onRating}
+        style={{ position: "absolute", top: 100, right: 20, cursor: "pointer" }}
+      >
+        <img src={rating} height={70} width={70}></img>
+      </div>
+
       <div style={{ marginBottom: "20px" }} className="game-header">
         <span className="game-header-text first">Матч</span>
         <span className="game-header-text second">Окончен</span>
@@ -90,11 +134,15 @@ export const FinishScreen = ({ width, height, score, onMain }) => {
           position: "absolute",
           bottom: 0,
           display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
           justifyContent: "center",
         }}
       >
-        {" "}
-        <img height={height / 2.5} src={keeper}></img>{" "}
+        <span className="game-header-text second">
+          {score.keeper > score.player ? "Поражение" : "Победа!"}
+        </span>
+        <img height={height / 2.7} src={keeper}></img>{" "}
       </div>
     </div>
   );
